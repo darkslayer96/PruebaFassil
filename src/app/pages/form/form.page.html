@@ -1,0 +1,323 @@
+
+<ion-content>
+
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="2">
+
+         
+            <img src="https://static.wikia.nocookie.net/warner-bros-entertainment/images/6/6e/Acme-corp.png" alt="" />
+
+        </ion-col>
+        <ion-col size="8" class="ion-text-center">
+          <ion-text>
+            <h1>Hackathon Virtual 2022</h1>
+          </ion-text>
+       <ion-label >Formulario de inscripción</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  
+
+    
+  <ion-grid fixed>
+    <form [formGroup]="registroForm"  #registroFormEl >
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="stacked">Nombres <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input id="nombres" formControlName="nombres" type="text"></ion-input>
+           
+
+
+          </ion-item>
+          <div *ngIf="nombres?.invalid && (nombres?.dirty || nombres?.touched)"
+          class="alert alert-danger">
+          <div *ngIf="nombres?.errors?.['required']" class="ion-padding">
+           <ion-label color="danger"> El nombre es requerido</ion-label>
+          </div>
+          <div *ngIf="nombres?.errors?.['minlength']">
+      
+            <ion-label color="danger">El nombre debe tener un mínimo de {{nombres?.errors?.['minlength'].requiredLength}} caracteres</ion-label>
+          </div>
+
+          <div *ngIf="nombres?.errors?.['maxlength']">
+      
+            <ion-label color="danger">El nombre debe tener un máximo de {{nombres?.errors?.['maxlength'].requiredLength}} caracteres</ion-label>
+          </div>
+         
+        </div>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="stacked">Apellidos <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input formControlName="apellidos" type="text"></ion-input>
+          </ion-item>
+          <div *ngIf="apellidos?.invalid && (apellidos?.dirty || apellidos?.touched)"
+          class="alert alert-danger">
+          <div *ngIf="apellidos?.errors?.['required']" class="ion-padding">
+           <ion-label color="danger"> El apellido es requerido</ion-label>
+          </div>
+          <div *ngIf="apellidos?.errors?.['minlength']">
+      
+            <ion-label color="danger">El apellido debe tener un mínimo de {{apellidos?.errors?.['minlength'].requiredLength}} caracteres</ion-label>
+          </div>
+
+          <div *ngIf="apellidos?.errors?.['maxlength']">
+      
+            <ion-label color="danger">El apellido debe tener un máximo de {{apellidos?.errors?.['maxlength'].requiredLength}} caracteres</ion-label>
+          </div>
+         
+        </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="stacked">Carnet de Identidad <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input formControlName="carnetIdentidad"  type="text"></ion-input>
+          </ion-item>
+
+          <div *ngIf="carnetIdentidad?.invalid && (carnetIdentidad?.dirty || carnetIdentidad?.touched)"
+          class="alert alert-danger">
+          <div *ngIf="carnetIdentidad?.errors?.['required']" class="ion-padding">
+           <ion-label color="danger"> El carnet de identidad es requerido</ion-label>
+          </div>
+          <div *ngIf="carnetIdentidad?.errors?.['minlength']">
+      
+            <ion-label color="danger">El carnet de identidad debe tener un mínimo de {{carnetIdentidad?.errors?.['minlength'].requiredLength}} caracteres</ion-label>
+          </div>
+
+          <div *ngIf="carnetIdentidad?.errors?.['maxlength']">
+      
+            <ion-label color="danger">El carnet de identidad debe tener un máximo de {{carnetIdentidad?.errors?.['maxlength'].requiredLength}} caracteres</ion-label>
+          </div>
+         
+        </div>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label>Extensión <ion-text color="danger">*</ion-text></ion-label>
+            <ion-select formControlName="expedicionCi">
+              <ion-select-option *ngFor="let extension of extensionesEnum" [value]="extension.name">{{extension.name}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <div *ngIf="expedicionCi?.invalid && (expedicionCi?.dirty || expedicionCi?.touched)"
+          class="alert alert-danger">
+          <div *ngIf="expedicionCi?.errors?.['required']" class="ion-padding">
+           <ion-label color="danger"> La extensión del carnet de identidad es requerida</ion-label>
+          </div>
+    
+
+          <div *ngIf="expedicionCi?.errors?.['maxlength']">
+      
+            <ion-label color="danger">La extensión del carnet de identidad debe tener un máximo de {{expedicionCi?.errors?.['maxlength'].requiredLength}} caracteres</ion-label>
+          </div>
+         
+        </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="stacked">Teléfono <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input  type="tel" formControlName="telefono"></ion-input>
+          </ion-item>
+          <div *ngIf="telefono?.invalid && (telefono?.dirty || telefono?.touched)"
+          class="alert alert-danger">
+          <div *ngIf="telefono?.errors?.['required']" class="ion-padding">
+           <ion-label color="danger"> El teléfono es requerido</ion-label>
+          </div>
+          <div *ngIf="telefono?.errors?.['minlength']">
+      
+            <ion-label color="danger">El teléfono debe tener un mínimo de {{telefono?.errors?.['minlength'].requiredLength}} caracteres</ion-label>
+          </div>
+
+          <div *ngIf="telefono?.errors?.['maxlength']">
+      
+            <ion-label color="danger">El teléfono debe tener un máximo de {{telefono?.errors?.['maxlength'].requiredLength}} caracteres</ion-label>
+          </div>
+
+          <div *ngIf="telefono?.errors?.['pattern']">
+      
+            <ion-label color="danger">El teléfono ingresado no es válido</ion-label>
+          </div>
+         
+        </div>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item >
+            <ion-grid fixed>
+              <ion-row>
+                <ion-col size="12">
+                  <ion-label >Fecha de nacimiento <ion-text color="danger">*</ion-text></ion-label>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="12" class="ion-text-left">
+             
+         
+                  <ion-input [hidden]="true" [value]="fechaNacValue" formControlName="fechaNacimiento" ></ion-input>
+                  <ion-datetime-button  class="ion-text-left" datetime="fechaNacDateTime"></ion-datetime-button>
+                  <ion-modal [keepContentsMounted]="true">
+                    <ng-template>
+                      <ion-datetime 
+                      id="fechaNacDateTime" 
+                      presentation="date" 
+                      #fechaNacDateTime locale="es-ES"
+                      (ionChange)="fechaNacValue = fechaNacDateTime.value"
+                      [showDefaultButtons]="true"
+                      doneText="Aceptar"
+                      cancelText="Cancelar">
+                      </ion-datetime>
+                    </ng-template>
+                  </ion-modal>
+                </ion-col>
+              
+              </ion-row>
+            </ion-grid>
+          
+          </ion-item>
+          <div *ngIf="fechaNacimiento?.invalid && (fechaNacimiento?.dirty || fechaNacimiento?.touched)"
+          class="alert alert-danger">
+          <div *ngIf="fechaNacimiento?.errors?.['required']" class="ion-padding">
+           <ion-label color="danger"> La fecha de nacimiento es requerido</ion-label>
+          </div>
+          <div *ngIf="fechaNacimiento?.errors?.['edadInvalida']">
+      
+            <ion-label color="danger" text-wrap>Las inscripciones son solo para menores de 30 años</ion-label>
+          </div>
+         
+        </div>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="stacked">Dirección <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input formControlName="direccion"  type="text"></ion-input>
+            
+          </ion-item>
+          <div *ngIf="direccion?.invalid && (direccion?.dirty || direccion?.touched)"
+          class="alert alert-danger">
+          <div *ngIf="direccion?.errors?.['required']" class="ion-padding">
+           <ion-label color="danger"> La dirección es requerida</ion-label>
+          </div>
+          <div *ngIf="direccion?.errors?.['minlength']">
+      
+            <ion-label color="danger">La dirección debe tener un mínimo de {{direccion?.errors?.['minlength'].requiredLength}} caracteres</ion-label>
+          </div>
+
+          <div *ngIf="direccion?.errors?.['maxlength']">
+      
+            <ion-label color="danger">La dirección debe tener un máximo de {{direccion?.errors?.['maxlength'].requiredLength}} caracteres</ion-label>
+          </div>
+         
+        </div>
+        </ion-col>
+      </ion-row>
+  
+    <ion-input formControlName="repoCount" [hidden]="true" type="number" ></ion-input>
+    
+    </form>
+
+      <ion-row>
+        <ion-col size="6">
+          <div *ngIf="repoCount?.invalid && (repoCount?.dirty || repoCount?.touched)"
+          class="alert alert-danger">
+          <div *ngIf="repoCount?.errors?.['required']" class="ion-padding">
+           <ion-label color="danger"> Debe seleccionar al menos 1 repositorio</ion-label>
+          </div>
+          <div *ngIf="repoCount?.errors?.['min']">
+      
+            <ion-label color="danger">Debe seleccionar al menos {{repoCount?.errors?.['min'].min}} repositorio</ion-label>
+          </div>
+
+          <div *ngIf="repoCount?.errors?.['max']">
+      
+            <ion-label color="danger">La cantidad máxima de repositorios aceptados es {{repoCount?.errors?.['max'].max}}</ion-label>
+          </div>
+         
+        </div>
+          <ion-item>
+            <ion-label position="stacked">Nombre de usuario en github <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input [(ngModel)]="username"  type=""></ion-input>
+          </ion-item>
+          
+        </ion-col>
+        <ion-col size="6">
+         <ion-button (click)="buscarRepos(username)" [disabled]='username === ""'>
+           <ion-icon slot="start" name="search-outline"></ion-icon>
+           Buscar repositorios
+         </ion-button>
+        </ion-col>
+      </ion-row>
+  
+  
+  
+  
+  
+      <ion-row>
+        <ion-col size="12">
+          <ngx-datatable #table
+          class="material striped fullscreen"
+          [loadingIndicator]="loadingIndicator"
+          [columns]="columns"
+          [columnMode]="ColumnMode.force"
+          [headerHeight]="50"
+          [footerHeight]="50"
+          [rowHeight]="'auto'"
+          [limit]="5"
+          [rows]="rows"
+          [scrollbarH]="true"
+          [selected]="selectedRepos"
+          [selectionType]="SelectionType.checkbox"
+          (select)="onSelect($event)"
+          >
+          <ng-container *ngFor='let column of columns'>
+            <ngx-datatable-column 
+          
+            [sortable]="false"
+            [canAutoResize]="false"
+            [draggable]="false"
+            [resizeable]="false"
+            *ngIf='column.name === "Seleccionar"'
+            name="Seleccionar" 
+            prop="Checkbox">
+              <ng-template 
+              let-row="row" 
+              ngx-datatable-cell-template
+              let-value="value"
+              let-isSelected="isSelected"
+              let-onCheckboxChangeFn="onCheckboxChangeFn" >
+                <ion-checkbox [checked]="isSelected" [disabled]="!row.checked && selectedRepos.length === limit" [(ngModel)]="row.checked" (ionChange)="onCheckboxChangeFn($event)"></ion-checkbox>
+              </ng-template>
+            </ngx-datatable-column>
+  
+            <ngx-datatable-column *ngIf='column.name !== "Seleccionar"' name="{{column.name}}" prop="{{column.prop}}">
+            </ngx-datatable-column>
+          </ng-container>
+          </ngx-datatable>
+        </ion-col>
+      </ion-row>
+    
+      <ion-row>
+        <ion-col size="12" class="ion-text-right">
+          <ion-button block color="primary" [disabled]="registroForm.invalid" (click)="sendtoMail()" >
+            <ion-icon slot="end" name="mail-outline"></ion-icon>
+              Enviar por email
+          </ion-button>
+          <ion-button block color="success" [disabled]="registroForm.invalid" (click)="sendtoWhatsapp()" >
+         <ion-icon slot="end" name="logo-whatsapp"></ion-icon>
+              Enviar por whatsapp
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+  </ion-grid>
+
+
+</ion-content>
+
